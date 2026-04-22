@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compass UI Mockup</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --dark: #0f172a;
+      --blue: #2563eb;
+      --blue-soft: #dbeafe;
+      --amber: #f59e0b;
+      --amber-soft: #fef3c7;
+      --green: #059669;
+      --green-soft: #d1fae5;
+      --rose: #e11d48;
+      --rose-soft: #ffe4e6;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      background: var(--panel);
+      border-right: 1px solid var(--line);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    .brand p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .nav {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      padding: 13px 16px;
+      border-radius: 16px;
+      font-weight: 600;
+    }
+
+    .nav a.active {
+      background: var(--dark);
+      color: white;
+    }
+
+    .nav a:hover {
+      background: #f8fafc;
+      color: var(--text);
+    }
+
+    .assistant-card {
+      margin-top: auto;
+      background: linear-gradient(145deg, #2563eb, #0f172a);
+      color: white;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .assistant-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .assistant-card p {
+      margin: 0 0 14px;
+      color: #dbeafe;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .assistant-card button,
+    .btn,
+    .btn-dark,
+    .btn-light {
+      border: none;
+      border-radius: 14px;
+      padding: 11px 16px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .assistant-card button,
+    .btn-light {
+      background: white;
+      color: var(--dark);
+    }
+
+    .main {
+      padding: 28px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .topbar h2 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    .topbar p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search {
+      width: 320px;
+      max-width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: white;
+      outline: none;
+    }
+
+    .btn-dark {
+      background: var(--dark);
+      color: white;
+    }
+
+    .grid-stats,
+    .content-grid,
+    .bottom-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-bottom: 24px;
+    }
+
+    .content-grid {
+      grid-template-columns: 1.6fr 0.9fr;
+      margin-bottom: 24px;
+    }
+
+    .bottom-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+
+    .stat-value {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 10px 0 6px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .card-header h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .small-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .small-actions .btn {
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    .table {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .table-head,
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 0.8fr 1.2fr 1.2fr;
+      gap: 12px;
+      padding: 16px;
+      align-items: start;
+    }
+
+    .table-head {
+      background: #f8fafc;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .table-row {
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .company-name {
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .mini {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .amber { background: var(--amber-soft); color: #92400e; }
+    .blue { background: var(--blue-soft); color: #1d4ed8; }
+    .green { background: var(--green-soft); color: #047857; }
+    .rose { background: var(--rose-soft); color: #be123c; }
+    .slate { background: #e2e8f0; color: #334155; }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .soft-panel {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .task,
+    .report,
+    .step {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: white;
+    }
+
+    .task-top,
+    .report-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .primary-action {
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      margin-top: 12px;
+    }
+
+    .secondary-action {
+      width: 100%;
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--line);
+      margin-top: 10px;
+    }
+
+    .report {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f8fafc;
+    }
+
+    .step-number {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+
+    @media (max-width: 1200px) {
+      .grid-stats,
+      .content-grid,
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .app {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .search {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .table-head {
+        display: none;
+      }
+
+      .table-row {
+        grid-template-columns: 1fr;
+      }
+
+      .report,
+      .task-top,
+      .report-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <small>PIZ Solutions</small>
+        <h1>Compass</h1>
+        <p>Internal CRM interface for company tracking, pipeline visibility, and reporting workflows.</p>
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="active">Dashboard</a>
+        <a href="#">Companies</a>
+        <a href="#">Intake Queue</a>
+        <a href="#">Pipeline</a>
+        <a href="#">Reports</a>
+        <a href="#">Tasks</a>
+        <a href="#">Risks</a>
+        <a href="#">Documents</a>
+        <a href="#">Settings</a>
+      </nav>
+
+      <div class="assistant-card">
+        <h3>Report Workspace</h3>
+        <p>Review records, generate summaries, and manage report workflows from one interface.</p>
+        <button>Open Panel</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h2>Compass Dashboard</h2>
+          <p>Manage company records, pipeline activity, and reporting in one place.</p>
+        </div>
+        <div class="topbar-actions">
+          <input class="search" type="text" placeholder="Search company, contact, program, or report" />
+          <button class="btn-dark">+ New Intake</button>
+        </div>
+      </div>
+
+      <section class="grid-stats">
+        <div class="card">
+          <div class="muted">Active Companies</div>
+          <div class="stat-value">42</div>
+          <div class="muted">8 added this month</div>
+        </div>
+        <div class="card">
+          <div class="muted">Pipeline Records</div>
+          <div class="stat-value">14</div>
+          <div class="muted">5 high-priority targets</div>
+        </div>
+        <div class="card">
+          <div class="muted">Reports in Draft</div>
+          <div class="stat-value">9</div>
+          <div class="muted">3 awaiting review</div>
+        </div>
+        <div class="card">
+          <div class="muted">Open Risks</div>
+          <div class="stat-value">6</div>
+          <div class="muted">2 need escalation</div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Company Pipeline</h3>
+              <div class="muted">View company records, stages, priorities, and next actions.</div>
+            </div>
+            <div class="small-actions">
+              <button class="btn">Filter</button>
+              <button class="btn">Export</button>
+            </div>
+          </div>
+
+          <div class="table">
+            <div class="table-head">
+              <div>Company</div>
+              <div>Stage</div>
+              <div>Priority</div>
+              <div>Risk</div>
+              <div>Next Action</div>
+            </div>
+
+            <div class="table-row">
+              <div>
+                <div class="company-name">AeroForge Systems</div>
+                <div class="muted">Dana Ellis · Autonomous inspection systems</div>
+                <div class="mini">Updated Apr 20, 2026</div>
+              </div>
+              <div><span class="pill amber">Intake Review</span></div>
+              <div><span class="pill rose">High</span></div>
+              <div class="muted">Compliance docs incomplete</div>
+              <div>Schedule technical validation call</div>
+            </div>
+
+            <div class="table-row">
+              <div>
+                <div class="company-name">Blue Current Labs</div>
+                <div class="muted">Victor Chen · Power management hardware</div>
+                <div class="mini">Updated Apr 18, 2026</div>
+              </div>
+              <div><span class="pill blue">Qualified</span></div>
+              <div><span class="pill blue">Medium</span></div>
+              <div class="muted">Unclear procurement path</div>
+              <div>Draft Mission Bridge summary</div>
+            </div>
+
+            <div class="table-row">
+              <div>
+                <div class="company-name">Northstar Dynamics</div>
+                <div class="muted">Ariana Moss · Secure edge compute modules</div>
+                <div class="mini">Updated Apr 21, 2026</div>
+              </div>
+              <div><span class="pill green">Report Drafted</span></div>
+              <div><span class="pill rose">High</span></div>
+              <div class="muted">Needs buyer alignment</div>
+              <div>Review target program fit</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stack">
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Report Assistant</h3>
+                <div class="muted">Review and draft report content from existing records.</div>
+              </div>
+              <span class="pill green">Available</span>
+            </div>
+
+            <div class="soft-panel">
+              <div class="task">
+                <strong>Suggested action</strong>
+                <p class="muted">Create a Mission Bridge summary for AeroForge Systems and flag any missing fields for review.</p>
+              </div>
+              <button class="btn primary-action">Generate Report Draft</button>
+              <button class="btn secondary-action">Run Gap Analysis</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Priority Tasks</h3>
+                <div class="muted">Current queue across intake, review, and reporting.</div>
+              </div>
+            </div>
+
+            <div class="stack">
+              <div class="task">
+                <div class="task-top">
+                  <div>
+                    <strong>Review new vendor intake</strong>
+                    <div class="muted">Owner: Maile · Due: Today</div>
+                  </div>
+                  <span class="pill blue">Open</span>
+                </div>
+              </div>
+
+              <div class="task">
+                <div class="task-top">
+                  <div>
+                    <strong>Generate Mission Bridge brief</strong>
+                    <div class="muted">Owner: Report Team · Due: Tomorrow</div>
+                  </div>
+                  <span class="pill amber">In Progress</span>
+                </div>
+              </div>
+
+              <div class="task">
+                <div class="task-top">
+                  <div>
+                    <strong>Confirm compliance packet</strong>
+                    <div class="muted">Owner: Ops · Due: Apr 25</div>
+                  </div>
+                  <span class="pill rose">Blocked</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Reports</h3>
+              <div class="muted">View draft, review, and publication status across reports.</div>
+            </div>
+            <button class="btn">View All</button>
+          </div>
+
+          <div class="stack">
+            <div class="report">
+              <div>
+                <strong>AeroForge Systems</strong>
+                <div class="muted">Mission Bridge Snapshot · Updated 2h ago</div>
+              </div>
+              <div>
+                <span class="pill green">Ready for Review</span>
+                <button class="btn-dark" style="margin-left: 10px;">Open</button>
+              </div>
+            </div>
+
+            <div class="report">
+              <div>
+                <strong>Northstar Dynamics</strong>
+                <div class="muted">Executive Summary · Updated Yesterday</div>
+              </div>
+              <div>
+                <span class="pill amber">Draft</span>
+                <button class="btn-dark" style="margin-left: 10px;">Open</button>
+              </div>
+            </div>
+
+            <div class="report">
+              <div>
+                <strong>Blue Current Labs</strong>
+                <div class="muted">Capability Match · Updated Apr 19</div>
+              </div>
+              <div>
+                <span class="pill slate">Queued</span>
+                <button class="btn-dark" style="margin-left: 10px;">Open</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Process View</h3>
+              <div class="muted">Simple internal workflow snapshot.</div>
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div>Vendor intake submitted</div>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <div>Compass company record created</div>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <div>Team validates fields and risks</div>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <div>Draft report is created for review</div>
+            </div>
+            <div class="step">
+              <div class="step-number">5</div>
+              <div>Reviewer approves and publishes</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
